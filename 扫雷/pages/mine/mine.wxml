@@ -1,0 +1,33 @@
+<!--pages/primary/primary.wxml-->
+<view class="container">
+    <view>
+        <view class="title">当前难度为：{{level}}</view>
+        <view>
+            <button bindtap="recover" class="{{class_recover}}">翻开</button>
+            <button bindtap="mark" class="{{class_mark}}">标记</button>
+            <button bindtap="resetGame" class="buttonR">重置</button>
+        </view>
+        <view class="mine-panel">
+            <view class="mine-panel-row" wx:for="{{row}}" wx:for-index="x" wx:key="key">
+                <view class="mine-cell" wx:for="{{column}}" wx:for-index="y" wx:key="key">
+                    <view bindtap="tap" data-Row_Num="{{x}}" data-Column_Num="{{y}}">
+                        <view wx:if="{{cells[x*column+y].showFlag==false && isFailed==false && cells[x*column+y].markFlag==false}}" class="mine-cover">
+                        ---
+                        </view>
+                        <view wx:if="{{cells[x*column+y].showFlag==true ||isFailed==true && cells[x*column+y].isMine==false}}" class="mine-number-{{cells[x*column+y].map}}">
+                        {{cells[x*column+y].map}}
+                        </view>
+
+                        <view wx:if="{{isFailed==true && cells[x*column+y].isMine==true}}">
+                        <image src="/images/minesweeper.png" style="width: 60rpx;height: 60rpx;"></image>
+                        </view>
+
+                        <view wx:if="{{cells[x*column+y].markFlag==true||(isFailed==true && cells[x*column+y].isMine==false && cells[x*column+y].markFlag==true)}}">
+                        <image src="/images/flag.png" style="width: 60rpx;height: 60rpx;"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

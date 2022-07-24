@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">扫雷</view>
+  <view class="btnRow">
+    <button bindtap="chooseLevel" data-level="primary">初级</button>
+    <button bindtap="chooseLevel" data-level="difficult">中级</button>
+    <button bindtap="chooseLevel" data-level="expert">高级</button>
+  </view>
+</view>
